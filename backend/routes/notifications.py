@@ -1,40 +1,50 @@
 from flask import Blueprint, request, jsonify
 from backend.database_config import get_db_connection
+import cx_Oracle  # Import cx_Oracle
 
 notifications = Blueprint('notifications', __name__)
 
-# Yeni bir bildirim ekleme endpoint'i
+# Endpoint to add a new notification
 @notifications.route('/notifications', methods=['POST'])
 def add_notification():
     data = request.json
     user_id = data.get('user_id')
     message = data.get('message')
 
-    if not all([user_id, message]):
+    if not user_id or not message:
         return jsonify({'error': 'User ID and message are required!'}), 400
 
     connection = get_db_connection()
     cursor = connection.cursor()
 
     try:
+        notification_id = cursor.var(cx_Oracle.NUMBER)
+
         cursor.execute("""
             INSERT INTO Notifications (UserID, Message, ReadStatus)
             VALUES (:user_id, :message, 0)
+            RETURNING NotificationID INTO :notification_id
         """, {
             'user_id': user_id,
-            'message': message
+            'message': message,
+            'notification_id': notification_id
         })
+
         connection.commit()
+
+        new_notification_id = int(notification_id.getvalue()[0])
+
     except Exception as e:
         connection.rollback()
-        return jsonify({'error': f'Failed to add notification: {str(e)}'}), 500
+        print(f"Error during notification creation: {e}")
+        return jsonify({'error': f'Failed to create notification: {str(e)}'}), 500
     finally:
         cursor.close()
         connection.close()
 
-    return jsonify({'message': 'Notification added successfully!'}), 201
+    return jsonify({'message': 'Notification created successfully!', 'notification_id': new_notification_id}), 201
 
-# Tüm bildirimleri listeleme endpoint'i
+# Endpoint to list all notifications
 @notifications.route('/notifications', methods=['GET'])
 def list_notifications():
     connection = get_db_connection()
@@ -53,7 +63,7 @@ def list_notifications():
 
     return jsonify(result), 200
 
-# Belirli bir bildirimi görüntüleme endpoint'i
+# Endpoint to retrieve a specific notification
 @notifications.route('/notifications/<int:notification_id>', methods=['GET'])
 def get_notification(notification_id):
     connection = get_db_connection()
@@ -75,7 +85,7 @@ def get_notification(notification_id):
 
     return jsonify(result), 200
 
-# Belirli bir bildirimi "okundu" olarak işaretleme endpoint'i
+# Endpoint to mark a notification as read
 @notifications.route('/notifications/<int:notification_id>', methods=['PUT'])
 def mark_notification_as_read(notification_id):
     connection = get_db_connection()

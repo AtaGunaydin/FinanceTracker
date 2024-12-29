@@ -6,6 +6,7 @@ from backend.database_config import get_db_connection
 users = Blueprint('users', __name__)
 
 # Endpoint: Adding User 
+# Endpoint: Adding User 
 @users.route('/users', methods=['POST'])
 def add_user():
     data = request.json
@@ -34,6 +35,7 @@ def add_user():
         })
         connection.commit()
     except Exception as e:
+        print(f"Error during user creation: {e}")
         connection.rollback()
         return jsonify({'error': f'Failed to add user: {str(e)}'}), 500
     finally:

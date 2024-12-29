@@ -29,3 +29,16 @@ def home():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+@app.route("/health")
+def health_check():
+    try:
+        connection = get_db_connection()
+        cursor = connection.cursor()
+        cursor.execute("SELECT 1 FROM DUAL")
+        cursor.close()
+        connection.close()
+        return "Database connection is healthy!", 200
+    except Exception as e:
+        return f"Database connection failed: {str(e)}", 500

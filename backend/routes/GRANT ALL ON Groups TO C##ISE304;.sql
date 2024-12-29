@@ -90,3 +90,68 @@ BEGIN
     :NEW.DebtID := DebtSeq.NEXTVAL;
 END;
 
+
+DESCRIBE Users;
+
+CREATE SEQUENCE USERS_SEQ
+START WITH 1
+INCREMENT BY 1
+NOCACHE;
+
+CREATE OR REPLACE TRIGGER USERS_TRG
+BEFORE INSERT ON USERS
+FOR EACH ROW
+BEGIN
+  :NEW.USERID := USERS_SEQ.NEXTVAL;
+END;
+/
+
+
+SELECT * FROM Users WHERE Email = 'john.doe@example.com';
+
+
+DELETE FROM Users;
+COMMIT;
+DELETE FROM Groups;
+COMMIT;
+
+ALTER TABLE Groups MODIFY GroupName VARCHAR2(255);
+
+
+CREATE SEQUENCE GROUPS_SEQ START WITH 1 INCREMENT BY 1;
+
+
+CREATE OR REPLACE TRIGGER TRG_GROUPS_ID
+BEFORE INSERT ON Groups
+FOR EACH ROW
+BEGIN
+  :NEW.GroupID := GROUPS_SEQ.NEXTVAL;
+END;
+/
+
+
+INSERT INTO Groups (GroupName, CreatedDate)
+VALUES ('Test Group', SYSDATE);
+
+SELECT * FROM Groups;
+
+
+DESCRIBE Notifications;
+
+INSERT INTO Users (UserID, Name, Email, Password)
+VALUES (1, 'Test User', 'testuser@example.com', 'password123');
+COMMIT;
+
+SELECT * FROM Users WHERE UserID = 1;
+
+
+INSERT INTO Users (UserID, Name, Email, Password)
+VALUES ( 'Test User', 'testuser@example.com','123456', 'password123', 'USD');
+COMMIT;
+
+
+CREATE SEQUENCE NotificationSeq START WITH 1 INCREMENT BY 1;
+
+
+INSERT INTO Notifications (NotificationID, UserID, Message, ReadStatus)
+VALUES (NotificationSeq.NEXTVAL, :user_id, :message, 0);
