@@ -1,1 +1,0 @@
-# Saldo - Expense Sharing App
