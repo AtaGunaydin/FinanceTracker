@@ -1,0 +1,25 @@
+# Web Framework
+Flask==3.0.0
+Flask-Cors==4.0.0
+Werkzeug==3.0.0
+
+# Database
+mysql-connector-python==8.0.26
+PyMySQL==1.1.0
+SQLAlchemy==2.0.23
+
+# Authentication & Security
+PyJWT==2.8.0
+bcrypt==4.0.1
+python-dotenv==1.0.0
+
+# API & Requests
+requests==2.31.0
+
+# Development Tools
+black==23.11.0
+flake8==6.1.0
+pytest==7.4.3
+
+# Production
+gunicorn==21.2.0

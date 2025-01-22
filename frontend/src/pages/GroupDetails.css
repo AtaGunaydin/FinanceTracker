@@ -1,0 +1,805 @@
+.group-details-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+.group-header {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.group-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+.group-meta {
+  color: #666;
+  font-size: 1rem;
+}
+
+.group-content {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 2rem;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.side-content {
+  position: sticky;
+  top: 2rem;
+  height: fit-content;
+}
+
+.members-section, .debts-section {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.members-section h2, .debts-section h2 {
+  margin-bottom: 1.5rem;
+  color: #1a1a1a;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.members-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.member-card {
+  padding: 1rem;
+  border-radius: 8px;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+.member-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.member-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.member-name {
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.member-email {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.debts-list {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.debt-card {
+  display: flex;
+  align-items: center;
+  padding: 1.2rem;
+  border-bottom: 1px solid #f0f0f0;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.debt-card:last-child {
+  border-bottom: none;
+}
+
+.debt-card:hover {
+  background: #f8f9fa;
+}
+
+.debt-amount-section {
+  width: 120px;
+  flex-shrink: 0;
+}
+
+.debt-amount {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2ecc71;
+  background: rgba(46, 204, 113, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.debt-info-section {
+  flex: 1;
+  margin: 0 1.5rem;
+}
+
+.debt-users {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.user {
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.from-user {
+  color: #ff5252;
+}
+
+.to-user {
+  color: #2ecc71;
+}
+
+.arrow {
+  color: #666;
+  font-size: 1.2rem;
+}
+
+.debt-description {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.delete-debt-button {
+  opacity: 0;
+  background: none;
+  border: none;
+  color: #ff5252;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.debt-card:hover .delete-debt-button {
+  opacity: 1;
+}
+
+.delete-debt-button:hover {
+  background: rgba(255, 82, 82, 0.1);
+  transform: scale(1.1);
+}
+
+.no-debts {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: white;
+  border-radius: 16px;
+  color: #666;
+}
+
+.no-debts-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.no-debts p:first-of-type {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.no-debts p:last-of-type {
+  color: #999;
+}
+
+/* Responsive tasarım */
+@media (max-width: 768px) {
+  .debt-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .debt-amount-section {
+    width: auto;
+  }
+
+  .debt-info-section {
+    margin: 0;
+  }
+
+  .delete-debt-button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .group-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.debts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.add-debt-button {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.add-debt-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h3 {
+  margin-bottom: 1.5rem;
+  color: #1a1a1a;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.modal-content .form-group {
+  margin-bottom: 1rem;
+}
+
+.modal-content label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #4a4a4a;
+  font-weight: 500;
+}
+
+.modal-content select,
+.modal-content input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.modal-content select:focus,
+.modal-content input:focus {
+  outline: none;
+  border-color: #2ecc71;
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.1);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.modal-actions button {
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-actions button:first-child {
+  background: #f8f9fa;
+  border: 1.5px solid #e0e0e0;
+  color: #4a4a4a;
+}
+
+.modal-actions .submit-button {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  border: none;
+  color: white;
+}
+
+.modal-actions button:hover {
+  transform: translateY(-2px);
+}
+
+.split-info {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(46, 204, 113, 0.1);
+  color: #2ecc71;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.debt-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.debt-description {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.debt-actions {
+  display: flex;
+  align-items: center;
+}
+
+.delete-debt-button {
+  background: none;
+  border: none;
+  color: #ff5252;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.delete-debt-button:hover {
+  background: rgba(255, 82, 82, 0.1);
+  transform: scale(1.1);
+}
+
+.modal-content h3 {
+  text-align: center;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.debt-summary {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.summary-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.summary-header .member-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #1a1a1a;
+}
+
+.net-balance {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.net-balance.positive {
+  color: #2ecc71;
+}
+
+.net-balance.negative {
+  color: #ff5252;
+}
+
+.summary-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.summary-row .positive {
+  color: #2ecc71;
+}
+
+.summary-row .negative {
+  color: #ff5252;
+}
+
+.summary-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.debt-relations-section {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.debt-relations-section h2 {
+  margin-bottom: 1.5rem;
+  color: #1a1a1a;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.debt-relation-card {
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.debt-relation-card:last-child {
+  margin-bottom: 0;
+}
+
+.relation-users {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.debtor, .creditor {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.relation-arrow {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.relation-amount {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  background: rgba(46, 204, 113, 0.1);
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.no-relations {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+@media (max-width: 1200px) {
+  .group-content {
+    grid-template-columns: 1fr;
+  }
+
+  .side-content {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .debt-relation-card {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .relation-users {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .relation-arrow {
+    font-size: 0.8rem;
+  }
+}
+
+.debt-card.paid {
+  opacity: 0.7;
+  background: #f8f9fa;
+}
+
+.paid-badge {
+  display: inline-block;
+  background: #2ecc71;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-left: 0.5rem;
+}
+
+.mark-paid-button {
+  background: none;
+  border: none;
+  color: #2ecc71;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  margin-right: 0.5rem;
+}
+
+.mark-paid-button:hover {
+  background: rgba(46, 204, 113, 0.1);
+  transform: scale(1.1);
+}
+
+.debt-actions {
+  display: flex;
+  align-items: center;
+}
+
+/* Ödenmiş borçlar için soluk renkler */
+.debt-card.paid .debt-amount {
+  background: rgba(46, 204, 113, 0.05);
+}
+
+.debt-card.paid .from-user,
+.debt-card.paid .to-user {
+  color: #666;
+}
+
+.relation-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+.debt-relation-card .mark-paid-button,
+.debt-relation-card .delete-debt-button {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.debt-relation-card .mark-paid-button {
+  color: #2ecc71;
+}
+
+.debt-relation-card .mark-paid-button:hover {
+  background: rgba(46, 204, 113, 0.1);
+  transform: scale(1.1);
+}
+
+.debt-relation-card .delete-debt-button {
+  color: #ff5252;
+}
+
+.debt-relation-card .delete-debt-button:hover {
+  background: rgba(255, 82, 82, 0.1);
+  transform: scale(1.1);
+}
+
+.debt-relation-card.paid {
+  opacity: 0.7;
+  background: #f8f9fa;
+}
+
+.debt-relation-card.paid .relation-amount {
+  background: rgba(46, 204, 113, 0.05);
+}
+
+.debt-relation-card.paid .debtor,
+.debt-relation-card.paid .creditor {
+  color: #666;
+}
+
+/* Mobil görünüm için düzenlemeler */
+@media (max-width: 768px) {
+  .relation-actions {
+    gap: 0.5rem;
+  }
+
+  .debt-relation-card .mark-paid-button,
+  .debt-relation-card .delete-debt-button {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
+}
+
+/* Para çuvalı yerine terazi ikonu için stil */
+.empty-state-icon {
+  font-size: 3rem;
+  color: #2ecc71;
+  margin-bottom: 1rem;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+}
+
+.delete-group-button {
+  width: 100%;
+  padding: 1rem;
+  background: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.delete-group-button:hover {
+  background: #27ae60;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
+}
+
+.delete-group-button svg {
+  font-size: 1.2rem;
+}
+
+/* Modal için stiller */
+.delete-confirm-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.delete-confirm-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.delete-confirm-content h3 {
+  color: #1a1a1a;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.delete-confirm-content p {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.delete-confirm-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.confirm-delete {
+  padding: 0.8rem 2rem;
+  background: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.confirm-delete:hover {
+  background: #27ae60;
+  transform: translateY(-2px);
+}
+
+.cancel-delete {
+  padding: 0.8rem 2rem;
+  background: #f8f9fa;
+  color: #666;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cancel-delete:hover {
+  background: #e9ecef;
+  transform: translateY(-2px);
+} 

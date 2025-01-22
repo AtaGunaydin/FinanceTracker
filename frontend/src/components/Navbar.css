@@ -1,0 +1,264 @@
+.app-navbar {
+  background-color: white;
+  padding: 1rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.app-navbar .navbar-brand {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.app-navbar .brand-symbol {
+  color: #2ecc71;
+  margin-right: 2px;
+}
+
+.navbar-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.02em;
+}
+
+.brand-symbol {
+  color: #2ecc71;
+  margin-right: 2px;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #2ecc71;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  letter-spacing: 0.2px;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #27ae60;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-button {
+  padding: 0.8rem 2rem;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  letter-spacing: 0.2px;
+  box-shadow: 0 4px 15px rgba(46, 204, 113, 0.2);
+}
+
+.nav-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(46, 204, 113, 0.4);
+}
+
+.logout-button {
+  padding: 0.8rem 2rem;
+  background: transparent;
+  color: #2ecc71;
+  border: 2px solid #2ecc71;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.2px;
+}
+
+.logout-button:hover {
+  background: #ff5252;
+  color: white;
+  border-color: #ff5252;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 82, 82, 0.2);
+}
+
+.auth-nav {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .navbar-links {
+    gap: 1rem;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+  }
+}
+
+.notification-bell {
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #2ecc71;
+  border: 2px solid #2ecc71;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.notification-bell:hover {
+  background: rgba(46, 204, 113, 0.1);
+  transform: translateY(-2px);
+}
+
+.notification-bell svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Okunmamış bildirim olduğunda */
+.notification-bell.has-notifications::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 8px;
+  height: 8px;
+  background: #2ecc71;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.notification-container {
+  position: relative;
+}
+
+.notification-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 300px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+  z-index: 1000;
+}
+
+.notification-header {
+  padding: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notification-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #1a1a1a;
+}
+
+.unread-count {
+  font-size: 0.9rem;
+  color: #2ecc71;
+  font-weight: 500;
+}
+
+.notification-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.notification-item {
+  padding: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.notification-item:hover {
+  background: #f8f9fa;
+}
+
+.notification-item.unread {
+  background: rgba(46, 204, 113, 0.05);
+}
+
+.notification-title {
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.3rem;
+}
+
+.notification-message {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.notification-date {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.no-notifications {
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+} 

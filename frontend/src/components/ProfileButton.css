@@ -1,0 +1,39 @@
+.profile-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  margin-left: 1rem;
+  outline: none;
+}
+
+.profile-button:focus {
+  outline: none;
+  background: none;
+}
+
+.profile-button:hover {
+  background: none;
+}
+
+.profile-icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.profile-icon {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+.profile-button:hover .profile-icon-circle {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
+} 

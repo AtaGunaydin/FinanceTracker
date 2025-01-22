@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 24 24" fill="none" stroke="#2ecc71" stroke-width="1.75" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="12" cy="12" r="10" />
+  <!-- Terazi sapı -->
+  <path d="M12 6v4" />
+  <!-- Terazi kolları -->
+  <path d="M7 10h10" />
+  <!-- Sol kefe -->
+  <path d="M7 10c0 1.5 1 2.5 2.5 2.5s2.5-1 2.5-2.5" />
+  <!-- Sağ kefe -->
+  <path d="M17 10c0 1.5-1 2.5-2.5 2.5S12 11.5 12 10" />
+  <!-- Alt çizgi (denge göstergesi) -->
+  <path d="M8 15h8" />
+</svg> 
