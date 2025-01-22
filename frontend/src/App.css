@@ -4,19 +4,16 @@
   flex-direction: column;
 }
 
-/* Remove any padding that might be affecting the layout */
 .App > div {
   padding: 0;
   margin: 0;
   width: 100%;
 }
 
-/* Ensure routes take full width */
 .App > div > * {
   width: 100%;
 }
 
-/* Form styles */
 form {
   max-width: 400px;
   margin: 0 auto;
@@ -50,7 +47,6 @@ button:hover {
   background-color: #0056b3;
 }
 
-/* Card styles */
 .card {
   background: white;
   border-radius: 8px;
@@ -59,7 +55,6 @@ button:hover {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Message styles */
 .message {
   padding: 10px;
   margin: 10px 0;
