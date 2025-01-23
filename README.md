@@ -83,10 +83,3 @@ Clone the repository to your local machine:
    ```bash
    npm start
    ```
-
-## 📝 Notes
-
-- Ensure your backend server is running before starting the frontend or mobile app.
-- Make sure your mobile device is on the same network as your development machine for the mobile app to connect to the backend.
-
-This guide provides all the necessary steps to set up the project from scratch. If you encounter any issues, feel free to reach out for more detailed assistance.
