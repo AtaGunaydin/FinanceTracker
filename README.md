@@ -1,4 +1,22 @@
-# Saldo - Expense Sharing App
+ # Saldo - Smart Expense Management App
+
+Welcome to the Saldo app! This guide will help you set up the project on your local machine.
+
+## 🌟 Overview
+
+Saldo is a cutting-edge expense management application designed to simplify the way you handle shared expenses. Whether you're managing household bills, planning a group trip, or splitting costs with roommates, Saldo makes it effortless and efficient. With its intuitive interface and robust features, Saldo ensures that you stay on top of your finances with ease.
+
+### Why Saldo?
+
+- **Effortless Expense Tracking**: Automatically split bills and track expenses in real-time.
+- **Smart Notifications**: Stay informed with timely alerts about new expenses, payments, and reminders.
+- **Secure and Reliable**: Built with top-notch security features to protect your data and ensure privacy.
+- **User-Friendly Interface**: Designed with simplicity in mind, making it accessible for everyone.
+
+## 📦 Repository
+
+Clone the repository to your local machine:
+
 
 ## 🛠 Backend Setup
 
