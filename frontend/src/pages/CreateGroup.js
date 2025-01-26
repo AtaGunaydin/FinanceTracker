@@ -18,18 +18,15 @@ const CreateGroup = () => {
     members: ''
   });
 
-  // Input sanitization fonksiyonu
   const sanitizeInput = (input) => {
     const cleanInput = DOMPurify.sanitize(input, {
       ALLOWED_TAGS: [], 
       ALLOWED_ATTR: [] 
     });
     
-    // Sadece alfanumerik karakterler, boşluk ve bazı özel karakterlere izin ver
     return cleanInput.replace(/[^a-zA-Z0-9\s\-_]/g, '');
   };
 
-  // Grup adı değiştiğinde
   const handleGroupNameChange = (e) => {
     const rawValue = e.target.value;
     const sanitizedValue = sanitizeInput(e.target.value);
@@ -38,13 +35,11 @@ const CreateGroup = () => {
     setGroupName(sanitizedValue);
   };
 
-  // Kullanıcı araması yapılırken
   const handleSearchChange = (e) => {
     const sanitizedValue = sanitizeInput(e.target.value);
     setSearchTerm(sanitizedValue);
   };
 
-  // Kullanıcı araması
   const searchUsers = async (term) => {
     if (term.length < 2) {
       setSearchResults([]);
@@ -68,7 +63,6 @@ const CreateGroup = () => {
     }
   };
 
-  // Kullanıcı seçme/kaldırma
   const toggleUser = (user) => {
     if (selectedUsers.find(u => u.UserID === user.UserID)) {
       setSelectedUsers(selectedUsers.filter(u => u.UserID !== user.UserID));
@@ -77,7 +71,6 @@ const CreateGroup = () => {
     }
   };
 
-  // Validasyon fonksiyonları
   const validateGroupName = (name) => {
     if (!name.trim()) {
       return 'Group name is required';
@@ -101,27 +94,22 @@ const CreateGroup = () => {
     return '';
   };
 
-  // Form gönderildiğinde
   const handleCreateGroup = async (e) => {
     e.preventDefault();
     
-    // Tüm validasyonları çalıştır
     const groupNameError = validateGroupName(groupName);
     const membersError = validateMembers(selectedUsers);
 
-    // Hataları state'e kaydet
     setErrors({
       groupName: groupNameError,
       members: membersError
     });
 
-    // Eğer hata varsa, formu gönderme
     if (groupNameError || membersError) {
       return;
     }
 
     try {
-      // Önce grubu oluştur
       await axios.post(
         'http://localhost:5005/groups',
         { 

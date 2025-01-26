@@ -3,7 +3,7 @@ import datetime
 from functools import wraps
 from flask import request, jsonify
 
-SECRET_KEY = 'your-secret-key-here'  # Gerçek uygulamada environment variable kullanın
+SECRET_KEY = 'your-secret-key-here'  
 
 def generate_token(user_id):
     token = jwt.encode({
@@ -21,7 +21,7 @@ def token_required(f):
             return jsonify({'error': 'Token is missing'}), 401
 
         try:
-            token = token.split(' ')[1]  # "Bearer <token>" formatından token'ı al
+            token = token.split(' ')[1]  
             data = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
             current_user_id = data['user_id']
         except jwt.ExpiredSignatureError:
